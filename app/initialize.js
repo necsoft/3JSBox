@@ -1,13 +1,12 @@
 var THREE = require('three');
 var OrbitControls = require('three-orbit-controls')(THREE);
 var ResponsiveRenderer = require("tools/responsive_renderer.js");
+var hide_stats = require("tools/hide_stats.js");
 var stats = require('stats.js')();
 
 // Importing Shaders, yay!
 var skydome_vert = require("shaders/skydome_vert.glsl");
 var skydome_frag = require("shaders/skydome_frag.glsl");
-
-console.log(skydome_vert);
 
 // DOM is Ready!
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setSize(window.innerWidth,window.innerHeight);
     document.body.appendChild(renderer.domElement);
     renderer.setClearColor("#333333");
+
+    // Stats Setup
+    stats.dom.setAttribute("id", "stats_helper");
+    document.body.appendChild( stats.dom );
+    hide_stats.setup();
 
     // Camera & Orbit
     var camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,10000);
@@ -75,12 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
     scene.add(cube);
 
     var render = function () {
+        stats.begin();
         requestAnimationFrame( render );
 
         cube.rotation.x += 0.02;
         cube.rotation.y += 0.02;
 
         renderer.render(scene, camera);
+
+        stats.end();
 
     };
 
