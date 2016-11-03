@@ -81,12 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
     var render = function () {
         stats.begin();
         requestAnimationFrame( render );
+        u_time++;
+        // ----------------------------------------------------//
 
         cube.rotation.x += 0.02;
         cube.rotation.y += 0.02;
 
+        // --------------------------------------------------- //
         renderer.render(scene, camera);
-
         stats.end();
 
     };
