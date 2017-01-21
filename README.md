@@ -3,6 +3,6 @@
 This is my boilerplate for Three.js works.
 
 ```
-npm install
+yarn install
 brunch watch --server
 ```
