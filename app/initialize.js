@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setClearColor("#333333");
 
     // Stats Setup
-    console.log(stats);
     stats.dom.setAttribute("id", "stats_helper");
     document.body.appendChild( stats.dom );
     hide_stats.setup();
