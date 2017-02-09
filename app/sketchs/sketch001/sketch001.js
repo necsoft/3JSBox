@@ -4,6 +4,9 @@ var ResponsiveRenderer = require("tools/responsive_renderer.js");
 var hide_stats = require("tools/hide_stats.js");
 var stats = require('stats.js')();
 
+var Chance = require('chance');
+var chance = new Chance();
+
 // Importing Shaders, yay!
 var skydome_vert = require("shaders/skydome_vert.glsl");
 var skydome_frag = require("shaders/skydome_frag.glsl");
@@ -72,8 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lo agregamos a la escena
     scene.add( sky );
 
+    // Chance Value
+    var RANDOM_VALUE = chance.floating({min: 10, max: 30});
+
     // Cube
-    var geometry = new THREE.BoxGeometry(30,30,30);
+    var geometry = new THREE.BoxGeometry(RANDOM_VALUE,RANDOM_VALUE,RANDOM_VALUE);
     var material = new THREE.MeshNormalMaterial();
     var cube = new THREE.Mesh(geometry,material);
     scene.add(cube);
