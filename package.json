@@ -16,6 +16,8 @@
     "javascript-brunch": "^2.0.0",
     "stats.js": "0.17.0",
     "three": "*",
+    "three-addons": "^1.0.2",
+    "three-effectcomposer": "0.0.1",
     "three-orbit-controls": "*",
     "uglify-js-brunch": "^2.0.0"
   }
